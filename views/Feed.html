@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<div>
+<form name="feedForm">
+
+<table width="100%" border="0">
+  <tr>
+    <td colspan="2" bgcolor="#b5dcb3">
+      <h1>My Book</h1>
+    </td>
+  </tr>
+  <tr valign="top">
+    <td bgcolor="#b5dcb3" width="10%">
+               <p style="color: #0000FF; font-size: 20pt">Feed <p>
+               <p style="color: #000000; font-size: 12pt">Profile <p>
+      
+    </td>
+    <td bgcolor="#eee" width="50%" height="520">
+     <table border="1">
+	   <tr height="100">
+	     <td width="100%"><input type="text" size="100" name="inputText" ng-model="inputText.text"> <button  ng-click="createFeeds()"> Post </button>
+	   </tr>
+	  <tr height="80" bgcolor="#554433">
+	    <td width="100%">  
+		
+		 <div ng-repeat = "feed in inputFeeds"> 
+		 {{feed.text}} - {{feed.date}}<button  data-ng-click = "removeFeed(feed.id)">Remove</button>
+	
+		</div>
+		
+		</td> 
+	   </tr> 
+	 </table>
+
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#b5dcb3">
+      <center>
+      Talent Improving exercise, OFS
+      </center>
+    </td>
+  </tr>
+</table>
+<form>
+
+</div>
