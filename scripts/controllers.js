@@ -1,7 +1,5 @@
 	app.controller('SignInController',['$scope', '$location', function ($scope, $location)
 	{
-	   alert("Hai");
-		
 		var validUsers = [["sunder","sunder123"],["admin","admin123"],["test","test123"]];
 		
 		$scope.formValidation = function()
@@ -60,23 +58,23 @@
 			
 	}]);
 	
-	app.controller('FeedController', ['$scope', function ($scope)
+	app.controller('FeedController', ['$scope','$location', function ($scope, $location)
 	{
-	  alert("*** from Feed Controller");
+	  
 	  $scope.inputFeeds =  [{id: 1, text:'First Input Text', date: '2014-11-11T12:44:58.737Z'},
 							 {id: 2, text:'Second Input Text', date: '2014-11-11T12:44:58.737Z'}];
 
 	  
 	  $scope.createFeeds = function(){
 	      var inText = $scope.inputText.text;
-		  alert("input Text   **** "+inText);
+		 
 		  var feedId = $scope.inputFeeds.length + 1;
 		  var currentTime = new Date();
 		  addFeed = {id: feedId, text: inText, date: currentTime};
-		  console.log(addFeed);
-		  	  
+	
+  	  
 		  $scope.inputFeeds.push(addFeed);
-		  console.log($scope.inputFeeds);
+
 		  $scope.inputText.text = " ";
 	  
 	  };
@@ -92,10 +90,19 @@
 			}
 	  
 	  };
+	  
+
+  $scope.goToProfile = function(){
+    $location.path("/profile");
+  }
+  
+   $scope.goToFeed = function(){
+      $location.path("/feed");
+ }
 	
 	}]);
 	
-	app.controller('ProfileController', ['$scope', function ($scope){
+	app.controller('ProfileController', ['$scope','$location', function ($scope, $location){
 	
 	
 	$scope.formValidation = function() {
@@ -114,36 +121,40 @@
 }
 
 function allLetter(a) {
-    var b = /^[A-Za-z]+$/;
-    if (a.match(b)) return true; else {
-        alert("Please fill the Name and name must have alphabet characters only");
-        a.focus();
-        return false;
+ 
+    var regExp = /^[A-Za-z]+$/;
+    if (regExp.test($scope.username)) return true; else {
+        alert("Name must be alphabets only");
+        $scope.username = "";
+		return false;
+		
     }
 }
 
 function ageCheck(a) {
-    var b = /^[1-9]+$/;
-    if (a.match(b) && a <= 100) return true; else {
+    var regExp = /^[1-9]+$/;
+    if ((regExp.test($scope.age) && $scope.age <=100)) return true; else {
         alert("Age should be number between 1 to 100");
+		$scope.age = "";
         return false;
     }
 }
 
 function phoneCheck(a) {
-    var b = /^[0-9]+$/;
-    if (a.match(b)) return true; else {
-        alert("phone Number Should be Number");
+    var regExp = /^[0-9]+$/;
+    if (regExp.test($scope.phone)) return true; else {
+        alert("Phone Number Should be Number");
+		$scope.phone = "";
         return false;
     }
 }
 
 function emailCheck(a) {
-    var b = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (a.match(b)) return true; else {
-        alert("You have entered an invalid email address!");
-        a.focus();
-        return false;
+    var regExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (regExp.test($scope.email)) return true; else {
+        alert("You have entered an invalid email id");
+		$scope.email = "";
+       return false;
     }
 }
 
@@ -158,7 +169,7 @@ var profileToSave = {
 };
 
 function saveProfile(a) {
-    alert("Thanks!");
+    alert("Profile Saved Successfully!!!");
 	
 	$scope.username = "";
     $scope.age = "";
@@ -181,6 +192,14 @@ $scope.updateImage = function() {
 	
 }
 
+
+ $scope.goToFeed = function(){
+     $location.path("/profile");
+ }
+
+  $scope.goToProfile = function(){
+      $location.path("/feed");
+ }
 
 
 }]);	

@@ -4,14 +4,14 @@
       <table width="100%" border="0">
          <tr>
             <td colspan="2" bgcolor="#b5dcb3">
-               <h1>My Book</h1>
+               <h1>My Book </h1>
             </td>
          </tr>
          <tr valign="top">
             <td bgcolor="#b5dcb3" width="10%">
-               <p style="color: #000000; font-size: 12pt">Feed <p>
-               <p style="color: #0000FF; font-size: 20pt">Profile <p>
-			   
+               <p style="color: #000000; font-size: 12pt" ng-click="goToProfile()">Feed <p>
+               <p style="color: #0000FF; font-size: 20pt" ng-click="goToFeed()">Profile <p>
+			  
             </td>
             <td bgcolor="#eee" width="50%" height="520">
                <table>
@@ -28,6 +28,8 @@
                         <label for="address">Address:</label> 
                         <textarea name="address" id="address" ng-model="address" size="50" width="50"> </textarea><br> 
                      </td>
+					 <td> </td>
+					 
                      <td>
                         <div id = "image1">
                            <img id="yourImgTag" ng-model= "yourImgTag" src="../images/vodo.jpg" alt="your image" style="width:152px;height:229px"/>
@@ -35,13 +37,15 @@
                      </td>
                   </tr>
                   <tr>
-                     <td>  </td>
-                     <td> <button ng-click="formValidation()">Save </button> </td>
+                     
+                     <td align="middle"> <button ng-click="formValidation()">Save </button> </td>
+					 <td> </td>
+					 <td>  </td>
                   </tr>
                   <tr>
                      <td> </td>
-                     <td> 
-                        <input type = "text" id="imgTxt" ng-model="imgTxt" placeholder = "Profile image" readonly="readonly" style="margin-left: -155px;"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					 <td><input type = "text" id="imgTxt" ng-model="imgTxt" placeholder = "Profile image" readonly="readonly" style="margin-left: -155px;"/> </td>
+                     <td align="right">                         
                         <input type="file" id="inputFile" ng-model="inputFile" name="testFile" ng-click = "updateImage()">
                      </td>
                   </tr>
